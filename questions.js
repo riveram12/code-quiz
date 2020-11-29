@@ -26,18 +26,43 @@ var quizQuestions = [
 ];
 
 // loop thru questions
-// for (var i = 0; i < quizQuestions.length; ++i) {
+var currentTime = 5 * 60 * 1000;
+window.localStorage.setItem("currentQuestion", 0);
+console.log(window.localStorage.getItem("currentQuestion"));
 
+document.getElementById("start").addEventListener("click", () => {
+  // START TIMER
+  setInterval(() => {
+    currentTime = currentTime - 1000;
+    document.getElementById("countdown").innerHTML = currentTime / 1000;
+  }, 1000);
+
+  let firstQuetion = quizQuestions[0];
+
+  // setup first question
+  document.getElementById("question-text").innerHTML = firstQuetion.question;
+  document.getElementById("a-text").innerHTML = firstQuetion.a;
+  document.getElementById("b-text").innerHTML = firstQuetion.b;
+  document.getElementById("c-text").innerHTML = firstQuetion.c;
+  document.getElementById("d-text").innerHTML = firstQuetion.d;
+  //   ++currentQuestion;
+});
 // console.log(quizQuestions[currentTime].question);
 
 document.getElementById("submitbtn").addEventListener("click", () => {
   console.log(currentQuestion);
-  ++currentQuestion;
+  //   console.log("here'");
+  //   window.localStorage.setItem(
+  //     "currentQuestion",
+  //     window.localStorage.getItem("currentQuestion") + 1
+  //   );
 
+  //   let question =
+  //     quizQuestions[parseInt(window.localStorage.getItem("currentQuestion"))];
   let question = quizQuestions[currentQuestion];
-  console.log(question);
+  //   console.log(question);
   let answer = question.correct;
-  console.log(answer);
+  //   console.log(answer);
 
   // add logic to check selected answer against question.correct
   if (document.getElementById("answer-a").checked && answer == "a") {
@@ -50,15 +75,23 @@ document.getElementById("submitbtn").addEventListener("click", () => {
     console.log("correct!!!");
   } else {
     console.log("INCORRECT!!!!!");
+    alert("INCORRECT!!!");
     // wrong...
   }
+  ++currentQuestion;
+  if (currentQuestion >= quizQuestions.length) {
+    alert("quiz complete");
+    return;
+  }
 
-  // setup first question
-  document.getElementById("question-text").innerHTML = question.question;
-  document.getElementById("a-text").innerHTML = question.a;
-  document.getElementById("b-text").innerHTML = question.b;
-  document.getElementById("c-text").innerHTML = question.c;
-  document.getElementById("d-text").innerHTML = question.d;
+  let questionAfter = quizQuestions[currentQuestion];
+  //   console.log(questionAfter);
+
+  document.getElementById("question-text").innerHTML = questionAfter.question;
+  document.getElementById("a-text").innerHTML = questionAfter.a;
+  document.getElementById("b-text").innerHTML = questionAfter.b;
+  document.getElementById("c-text").innerHTML = questionAfter.c;
+  document.getElementById("d-text").innerHTML = questionAfter.d;
 });
 
 // }
@@ -105,25 +138,6 @@ para.setAttribute(
 );
 
 // document.addEventListener("on click");
-
-var currentTime = 5 * 60 * 1000;
-
-document.getElementById("start").addEventListener("click", () => {
-  // START TIMER
-  setInterval(() => {
-    currentTime = currentTime - 1000;
-    document.getElementById("countdown").innerHTML = currentTime / 1000;
-  }, 1000);
-
-  let firstQuetion = quizQuestions[0];
-
-  // setup first question
-  document.getElementById("question-text").innerHTML = firstQuetion.question;
-  document.getElementById("a-text").innerHTML = firstQuetion.a;
-  document.getElementById("b-text").innerHTML = firstQuetion.b;
-  document.getElementById("c-text").innerHTML = firstQuetion.c;
-  document.getElementById("d-text").innerHTML = firstQuetion.d;
-});
 
 // var timeInterval = setInterval(function() {
 //     timerEl.textContent = timeLeft + " seconds remaining";
