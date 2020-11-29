@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>High Score Page</title>
+  </head>
+  <body>
+    <a href="index.html">Go Back</a>
+    My scores:
+    <button id="clear-scores">Clear Highscores</button>
+    <ul id="score-list">
+      <!-- ... add in new li items to this -->
+    </ul>
+  </body>
+</html>
+<!-- <script type="text/javascript" src="quiz_questions.js"></script> -->
+
+<script>
+  var list = document.getElementById("score-list");
+  if ("highscores" in localStorage) {
+    var keys = Object.keys(JSON.parse(window.localStorage["highscores"]));
+
+    for (var i = 0; i < keys.length; ++i) {
+      var value = JSON.parse(window.localStorage["highscores"])[keys[i]];
+      console.log(keys[i], value);
+      var newItem = document.createElement("LI");
+      // value is score
+      // key  = keys[i]
+      // key is someone's name
+      newItem.appendChild(document.createTextNode(keys[i]));
+      newItem.appendChild(document.createTextNode(value));
+      list.appendChild(newItem);
+    }
+
+    document.getElementById("clear-scores").addEventListener("click", () => {
+      window.localStorage.clear();
+      location.href = "score.html";
+    });
+  }
+</script>

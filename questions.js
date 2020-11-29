@@ -2,7 +2,9 @@
 
 // html that has the timer starting at 0
 
-var highscore = {};
+var numCorrect = 0;
+var numIncorrect = 0;
+
 var currentQuestion = 0;
 
 var quizQuestions = [
@@ -27,8 +29,6 @@ var quizQuestions = [
 
 // loop thru questions
 var currentTime = 5 * 60 * 1000;
-window.localStorage.setItem("currentQuestion", 0);
-console.log(window.localStorage.getItem("currentQuestion"));
 
 document.getElementById("start").addEventListener("click", () => {
   // START TIMER
@@ -46,62 +46,100 @@ document.getElementById("start").addEventListener("click", () => {
   document.getElementById("c-text").innerHTML = firstQuetion.c;
   document.getElementById("d-text").innerHTML = firstQuetion.d;
   //   ++currentQuestion;
-});
+}); // end of start quiz event handler
+
 // console.log(quizQuestions[currentTime].question);
+function hideStuff() {
+  // docuement ... hide elements
+} // end function
 
 document.getElementById("submitbtn").addEventListener("click", () => {
   console.log(currentQuestion);
-  //   console.log("here'");
-  //   window.localStorage.setItem(
-  //     "currentQuestion",
-  //     window.localStorage.getItem("currentQuestion") + 1
-  //   );
 
-  //   let question =
-  //     quizQuestions[parseInt(window.localStorage.getItem("currentQuestion"))];
   let question = quizQuestions[currentQuestion];
-  //   console.log(question);
   let answer = question.correct;
-  //   console.log(answer);
 
   // add logic to check selected answer against question.correct
   if (document.getElementById("answer-a").checked && answer == "a") {
     console.log("correct!!!");
+    alert("CORRECT!!!");
+    ++numCorrect;
   } else if (document.getElementById("answer-b").checked && answer == "b") {
     console.log("correct!!!");
+    alert("CORRECT!!!");
+    ++numCorrect;
   } else if (document.getElementById("answer-c").checked && answer == "c") {
     console.log("correct!!!");
+    alert("CORRECT!!!");
+    ++numCorrect;
   } else if (document.getElementById("answer-d").checked && answer == "d") {
     console.log("correct!!!");
+    alert("CORRECT!!!");
+    ++numCorrect;
   } else {
     console.log("INCORRECT!!!!!");
-    alert("INCORRECT!!!");
+    alert("INCORRECT!!! Subtract 5 seconds");
+
     // wrong...
+    // take off 5 seconds...
+    currentTime = currentTime - 5000;
   }
+
+  document.getElementById("answer-a").checked = false;
+  document.getElementById("answer-b").checked = false;
+  document.getElementById("answer-c").checked = false;
+  document.getElementById("answer-d").checked = false;
+
   ++currentQuestion;
+
   if (currentQuestion >= quizQuestions.length) {
     alert("quiz complete");
+    //  quiz is now complete, collect name...
+    var yourScoreText = document.createElement("P");
+    yourScoreText.innerHTML = "Your score is [ " + numCorrect + " ]";
+    var newInput = document.createElement("INPUT");
+    newInput.placeholder = "Your name...";
+    newInput.type = "text";
+    newInput.id = "your-name";
+    var button = document.createElement("BUTTON");
+    button.innerHTML = "Submit";
+    button.addEventListener("click", () => {
+      var json = JSON.parse(localStorage.getItem("highscores"));
+
+      if (json == null) {
+        window.localStorage.setItem("highscores", JSON.stringify({}));
+      }
+      json = JSON.parse(localStorage.getItem("highscores"));
+      console.log(yourName.value, numCorrect);
+      json[yourName.value] = numCorrect;
+      localStorage.setItem("highscores", JSON.stringify(json));
+
+      location.href = "score.html";
+    });
+
+    document.body.appendChild(button);
+    document.body.appendChild(newInput);
+    document.body.appendChild(yourScoreText);
+
+    var yourName = document.getElementById("your-name");
+
+    hideStuff(); // implement this later to hide all non wanted UI
     return;
   }
 
   let questionAfter = quizQuestions[currentQuestion];
-  //   console.log(questionAfter);
 
   document.getElementById("question-text").innerHTML = questionAfter.question;
   document.getElementById("a-text").innerHTML = questionAfter.a;
   document.getElementById("b-text").innerHTML = questionAfter.b;
   document.getElementById("c-text").innerHTML = questionAfter.c;
   document.getElementById("d-text").innerHTML = questionAfter.d;
-});
-
-// }
+}); // end of submit event handler
 
 // a heading and instruction on how to play the game
 var body = document.body;
 var h1El = document.createElement("h1");
 var para = document.createElement("p");
-
-// var btn = document.createElement("start");
 
 //Set text content of elements
 h1El.textContent = "Coding Quiz Challenge";
@@ -123,8 +161,6 @@ para.textContent =
 // compar ethe user choice to the acutal answer
 // counter for number of f=correct answers
 // grab he value of their initals and their score and save to local storage
-var numCorrect = 0;
-var numIncorrect = 0;
 
 //APPEND ELEMENTS
 body.appendChild(h1El);
@@ -138,18 +174,6 @@ para.setAttribute(
 );
 
 // document.addEventListener("on click");
-
-// var timeInterval = setInterval(function() {
-//     timerEl.textContent = timeLeft + " seconds remaining";
-//     timeLeft--;
-
-//     if (timeLeft === 0) {
-//       timerEl.textContent = "";
-//       speedRead();
-//       clearInterval(timeInterval);
-//     }
-
-//   }, 1000);
 
 // loop thru questuiokbs check see what what user clicked,
 //  check what user clicked agains correct answer.
