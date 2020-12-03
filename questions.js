@@ -39,7 +39,7 @@ document.getElementById("start").addEventListener("click", () => {
 
   let firstQuetion = quizQuestions[0];
 
-  // setup first question
+  // setup first question and calling answers
   document.getElementById("question-text").innerHTML = firstQuetion.question;
   document.getElementById("a-text").innerHTML = firstQuetion.a;
   document.getElementById("b-text").innerHTML = firstQuetion.b;
@@ -92,15 +92,19 @@ document.getElementById("submitbtn").addEventListener("click", () => {
 
   ++currentQuestion;
 
+  var yourName = document.getElementById("your-name");
+
   if (currentQuestion >= quizQuestions.length) {
-    alert("quiz complete");
-    //  quiz is now complete, collect name...
+    alert("quiz complete" + "Your Score is:" + numCorrect);
+    //  QUIZ IS NOW COMPLETE, collect name...
     var yourScoreText = document.createElement("P");
-    yourScoreText.innerHTML = "Your score is [ " + numCorrect + " ]";
+    yourScoreText.innerHTML = "Your score is " + numCorrect + "";
+    //input name field
     var newInput = document.createElement("INPUT");
     newInput.placeholder = "Your name...";
     newInput.type = "text";
     newInput.id = "your-name";
+    //creating a submit button
     var button = document.createElement("BUTTON");
     button.innerHTML = "Submit";
     button.addEventListener("click", () => {
@@ -116,10 +120,6 @@ document.getElementById("submitbtn").addEventListener("click", () => {
 
       location.href = "score.html";
     });
-
-    document.body.appendChild(button);
-    document.body.appendChild(newInput);
-    document.body.appendChild(yourScoreText);
 
     var yourName = document.getElementById("your-name");
 
@@ -143,28 +143,6 @@ var para = document.createElement("p");
 
 //Set text content of elements
 h1El.textContent = "Coding Quiz Challenge";
-para.textContent =
-  "Try to answer the following code-related questions within the time limit. Keep in mind the incorrect answers will penalize your score time by five seconds ";
-
-// setInterval(() => {
-// }, 1000);
-// when you hit start quiz the timer should start
-
-// some type of array that can iterate over for all questions
-
-// array of objects
-
-// objects should include
-// title of question
-// key for choices
-// answer key
-// compar ethe user choice to the acutal answer
-// counter for number of f=correct answers
-// grab he value of their initals and their score and save to local storage
-
-//APPEND ELEMENTS
-body.appendChild(h1El);
-body.appendChild(para);
 
 // Style all of our elements
 h1El.setAttribute("style", "margin:auto; width:50%; text-align:center;");
@@ -173,9 +151,9 @@ para.setAttribute(
   "margin:auto; width:50%; font:arial; font-size: 20px; text-align:center;"
 );
 
-// document.addEventListener("on click");
-
-// loop thru questuiokbs check see what what user clicked,
-//  check what user clicked agains correct answer.
-//  iff correct time remains same
-//  else subtract 5 seconds.
+//APPEND ELEMENTS
+body.appendChild(h1El);
+body.appendChild(para);
+document.body.appendChild(button);
+document.body.appendChild(newInput);
+document.body.appendChild(yourScoreText);
