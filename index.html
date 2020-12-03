@@ -14,7 +14,28 @@
   </head>
 
   <body>
-    <button id="start">Start Quiz</button>
+    <nav class="nav">
+      <a class="nav-link active" id="countdown"></a>
+      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+        >Disabled</a
+      >
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Coding Quiz Challenge</h1>
+        <p class="lead">
+          Complete this codign quiz with the time fram give. Every wrong answer
+          subtracts 5 seconds from your overall time. Good Luck!
+        </p>
+        <button id="start" onclick="document.location='questions-pg.html'">
+          Start Quiz
+        </button>
+        <button onclick="document.location='default.asp'">HTML Tutorial</button>
+      </div>
+    </div>
 
     <a href="score.html">View Highscores</a>
 
