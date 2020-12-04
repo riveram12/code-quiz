@@ -31,6 +31,7 @@ var quizQuestions = [
 var currentTime = 5 * 60 * 1000;
 
 document.getElementById("start").addEventListener("click", () => {
+  location.href = "questions-pg.html";
   // START TIMER
   setInterval(() => {
     currentTime = currentTime - 1000;

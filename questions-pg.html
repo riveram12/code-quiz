@@ -12,22 +12,21 @@
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
-  <body id="body-qpage">
+  <body>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-6"></div>
-                <p id="countdown"></p>
-            
-          </div>
-    </div>
-       
-    <p id="countdown"></p>
+    <nav class="nav">
+        <a class="nav-link" id="countdown"></a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+          >Disabled</a
+        >
+        <a class="nav-link active" href="score.html">View Highscores</a>
+      </nav>
    
        
 
 
-    <div class="container">
     
         <div class="question"></div>
         <p id="question-text"></p>
@@ -41,7 +40,6 @@
         <!-- </p> -->
         <div>
           <input type="radio" name="answer-selection" id="answer-b" value="b" />
-  
           <p id="b-text"></p>
         </div>
   
@@ -56,21 +54,15 @@
   
           <p id="d-text"></p>
         </div>
-    
-    <div>
-        
+
   
         <br />
         <input id="submitbtn" type="submit" />
       </div>
 
-
-
-
-
-
+  
 
   </body>
   <script src="questions.js"></script>
-  <script src="quiz_questions.js"></script>
+  
 </html>
