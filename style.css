@@ -1,8 +1,5 @@
-.body-qpage {
-  margin-top: 50px;
-}
-
 .jumbotron {
+  background-color: rgb(196, 63, 1);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -16,12 +13,26 @@
   margin-top: 60px;
 }
 
+.card {
+  margin-left: 200px;
+  margin-top: 50px;
+}
+
 input[type="radio"] {
   vertical-align: middle;
 }
-
+#a-text,
+#b-text,
+#c-text,
+#d-text {
+  vertical-align: middle;
+}
 .hide {
   display: none;
+}
+
+#quest {
+  margin-left: 50px;
 }
 
 .start-btn {

@@ -37,7 +37,7 @@ var quizQuestions = [
 ];
 
 // loop thru questions
-var currentTime = 5 * 60 * 60;
+var currentTime = 5 * 60 * 60 * 5;
 
 //
 
@@ -63,8 +63,6 @@ document.getElementById("start").addEventListener("click", () => {
 // hiding jumbotron
 function hideStuff() {
   document.querySelector(".jumbotron").classList.add("hide");
-
-  // docuement ... hide elements
 } // end function
 
 //when user clicks submit next question loads.
@@ -110,7 +108,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
   var yourName = document.getElementById("your-name");
 
   if (currentQuestion >= quizQuestions.length) {
-    alert("quiz complete" + "Your Score is:" + numCorrect);
+    alert("Quiz Complete! - " + "Your Score is: " + numCorrect);
     //  QUIZ IS NOW COMPLETE, collect name...
     var yourScoreText = document.createElement("P");
     yourScoreText.innerHTML = "Your score is " + numCorrect + "";
@@ -151,22 +149,13 @@ document.getElementById("submitBtn").addEventListener("click", () => {
   document.getElementById("d-text").innerHTML = questionAfter.d;
 }); // end of submit event handler
 
-// a heading and instruction on how to play the game
-var body = document.body;
-var para = document.createElement("p");
+// // a heading and instruction on how to play the game
+// var body = document.body;
+// var para = document.createElement("p");
 
-//Set text content of elements
+// //APPEND ELEMENTS
 
-// Style all of our elements
-h1El.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-para.setAttribute(
-  "style",
-  "margin:auto; width:50%; font:arial; font-size: 20px; text-align:center;"
-);
-
-//APPEND ELEMENTS
-body.appendChild(h1El);
-body.appendChild(para);
+// body.appendChild(para);
 document.body.appendChild(button);
 document.body.appendChild(newInput);
 document.body.appendChild(yourScoreText);
