@@ -9,22 +9,20 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
+    <script src="questions.js"></script>
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
 
   <body>
     <nav class="nav">
-     <!-- <a class="nav-link active" id="countdown"></a> -->
-      <a class="nav-link" href="#">Link</a>
-      <a class="nav-link" href="#">Link</a>
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
-        >Disabled</a>
-    <a class="nav-link active" href="score.html">View Highscores</a>
-      
-    </nav>
+        <a class="nav-link" href="index.html">Go Home</a>
+        <a class="nav-link" id="countdown" >"countdown # here"</a>
+        <a class="nav-link active" href="score.html">View Highscores</a>
+      </nav>
+   
 
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid" >
       <div class="container">
         <h1 class="display-4">Coding Quiz Challenge</h1>
         <p class="lead">
@@ -34,6 +32,48 @@
         <button id="start" class="start-btn">Start Quiz</button>
       </div>
     </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+
+            </div>
+
+            <div class="question"></div>
+            <p id="question-text"></p>
+
+        </br>
+        
+            <!-- <p id="atext"> -->
+            <div>
+              <input type="radio" name="answer-selection" id="answer-a" value="a"/>
+              <p id="a-text"></p>
+
+              <input type="radio" name="answer-selection" id="answer-b" value="b" />
+              <p id="b-text"></p>
+
+              <input type="radio" name="answer-selection" id="answer-c" value="c" />
+        
+              <p id="c-text"></p>
+
+              <input type="radio" name="answer-selection" id="answer-d" value="d" />
+        
+              <p id="d-text"></p>
+           
+            </div>
+            <!-- <br /> -->
+            <!-- </p> -->
+    </div>
+        
+            <br />
+            <input id="submitBtn" type="submit" />
+
+           
+
+        
+
+
 
    <!-- <a href="score.html">View Highscores</a> -->
 

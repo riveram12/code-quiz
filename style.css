@@ -16,5 +16,13 @@
   margin-top: 60px;
 }
 
+input[type="radio"] {
+  vertical-align: middle;
+}
+
+.hide {
+  display: none;
+}
+
 .start-btn {
 }

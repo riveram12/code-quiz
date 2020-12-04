@@ -18,7 +18,16 @@ var quizQuestions = [
   },
 
   {
-    question: "What is javascript 22222?",
+    question: "What is a variable",
+    a: "i dont know",
+    b: "not sure",
+    c: "super fun",
+    d: "not fun",
+    correct: "d",
+  },
+
+  {
+    question: "which is a correct for loop?",
     a: "i dont know",
     b: "not sure",
     c: "super fun",
@@ -28,10 +37,12 @@ var quizQuestions = [
 ];
 
 // loop thru questions
-var currentTime = 5 * 60 * 1000;
+var currentTime = 5 * 60 * 60;
+
+//
 
 document.getElementById("start").addEventListener("click", () => {
-  location.href = "questions-pg.html";
+  hideStuff();
   // START TIMER
   setInterval(() => {
     currentTime = currentTime - 1000;
@@ -49,12 +60,15 @@ document.getElementById("start").addEventListener("click", () => {
   //   ++currentQuestion;
 }); // end of start quiz event handler
 
-// console.log(quizQuestions[currentTime].question);
+// hiding jumbotron
 function hideStuff() {
+  document.querySelector(".jumbotron").classList.add("hide");
+
   // docuement ... hide elements
 } // end function
 
-document.getElementById("submitbtn").addEventListener("click", () => {
+//when user clicks submit next question loads.
+document.getElementById("submitBtn").addEventListener("click", () => {
   console.log(currentQuestion);
 
   let question = quizQuestions[currentQuestion];
@@ -139,11 +153,9 @@ document.getElementById("submitbtn").addEventListener("click", () => {
 
 // a heading and instruction on how to play the game
 var body = document.body;
-var h1El = document.createElement("h1");
 var para = document.createElement("p");
 
 //Set text content of elements
-h1El.textContent = "Coding Quiz Challenge";
 
 // Style all of our elements
 h1El.setAttribute("style", "margin:auto; width:50%; text-align:center;");
